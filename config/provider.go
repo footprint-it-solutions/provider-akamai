@@ -10,12 +10,25 @@ import (
 
 	ujconfig "github.com/crossplane/upjet/pkg/config"
 
-	"github.com/upbound/upjet-provider-template/config/null"
+	"github.com/footprint-it-solutions/provider-akamai/config/appsecurity"
+	"github.com/footprint-it-solutions/provider-akamai/config/botman"
+	"github.com/footprint-it-solutions/provider-akamai/config/clientlist"
+	"github.com/footprint-it-solutions/provider-akamai/config/cloudlets"
+	"github.com/footprint-it-solutions/provider-akamai/config/cloudwrapper"
+	"github.com/footprint-it-solutions/provider-akamai/config/cps"
+	"github.com/footprint-it-solutions/provider-akamai/config/datastream"
+	"github.com/footprint-it-solutions/provider-akamai/config/dns"
+	"github.com/footprint-it-solutions/provider-akamai/config/edge"
+	"github.com/footprint-it-solutions/provider-akamai/config/gtm"
+	"github.com/footprint-it-solutions/provider-akamai/config/iam"
+	"github.com/footprint-it-solutions/provider-akamai/config/imagingpolicy"
+	"github.com/footprint-it-solutions/provider-akamai/config/networklist"
+	"github.com/footprint-it-solutions/provider-akamai/config/property"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/upbound/upjet-provider-template"
+	resourcePrefix = "akamai"
+	modulePath     = "github.com/footprint-it-solutions/provider-akamai"
 )
 
 //go:embed schema.json
@@ -27,7 +40,7 @@ var providerMetadata string
 // GetProvider returns provider configuration
 func GetProvider() *ujconfig.Provider {
 	pc := ujconfig.NewProvider([]byte(providerSchema), resourcePrefix, modulePath, []byte(providerMetadata),
-		ujconfig.WithRootGroup("template.upbound.io"),
+		ujconfig.WithRootGroup("akamai.footprintit.net"),
 		ujconfig.WithIncludeList(ExternalNameConfigured()),
 		ujconfig.WithFeaturesPackage("internal/features"),
 		ujconfig.WithDefaultResourceOptions(
@@ -36,7 +49,20 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		appsecurity.Configure,
+		botman.Configure,
+		clientlist.Configure,
+		cloudlets.Configure,
+		cloudwrapper.Configure,
+		cps.Configure,
+		datastream.Configure,
+		dns.Configure,
+		edge.Configure,
+		gtm.Configure,
+		iam.Configure,
+		imagingpolicy.Configure,
+		networklist.Configure,
+		property.Configure,
 	} {
 		configure(pc)
 	}
