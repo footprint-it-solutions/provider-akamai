@@ -34,6 +34,13 @@ You can see the API reference [here](https://doc.crds.dev/github.com/footprint-i
 Run code-generation pipeline:
 ```console
 go run cmd/generator/main.go "$PWD"
+make submodules
+```
+
+To make locally:
+```console
+go install golang.org/x/tools/cmd/goimports@latest
+make generate
 ```
 
 Run against a Kubernetes cluster:
