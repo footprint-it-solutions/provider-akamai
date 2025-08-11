@@ -1,0 +1,23 @@
+apiVersion: policies.cloudlets.akamai.footprintit.net/v1alpha1
+kind: Policy
+metadata:
+  annotations:
+    meta.upbound.io/example-id: akamai/cloudlets/v1alpha1/policy
+  labels:
+    testing.upbound.io/example-name: test_cloudlet_policy
+  name: test_cloudlet_policy
+spec:
+  forProvider:
+    cloudlet_code: ER
+    description: Test Cloudlet Policy
+    group_id: 123456
+    timeouts:
+      default: 1h
+    match_rules:
+      - name: example-match-rule
+        type: erMatchRule
+        statusCode: 301
+        redirectURL: https://www.google.com
+        matchURL: google.com
+        useIncomingQueryString: false
+        useIncomingSchemeAndHost: false
