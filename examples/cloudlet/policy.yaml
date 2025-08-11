@@ -1,4 +1,4 @@
-apiVersion: policies.cloudlets.akamai.footprintit.net/v1alpha1
+apiVersion: cloudlets.akamai.footprintit.net/v1alpha1
 kind: Policy
 metadata:
   annotations:
@@ -8,12 +8,10 @@ metadata:
   name: test_cloudlet_policy
 spec:
   forProvider:
-    cloudlet_code: ER
+    cloudletCode: ER
     description: Test Cloudlet Policy
-    group_id: 123456
-    timeouts:
-      default: 1h
-    match_rules:
+    groupId: 123456
+    matchRules:
       - name: example-match-rule
         type: erMatchRule
         statusCode: 301
