@@ -4,10 +4,11 @@ metadata:
   annotations:
     meta.upbound.io/example-id: akamai/cloudlets/v1alpha1/policy
   labels:
-    testing.upbound.io/example-name: test_cloudlet_policy
-  name: test_cloudlet_policy
+    testing.upbound.io/example-name: test-cloudlet-policy
+  name: test-cloudlet-policy
 spec:
   forProvider:
+    name: Test-Cloudlet-Policy
     cloudletCode: ER
     description: Test Cloudlet Policy
     groupId: "123456"
