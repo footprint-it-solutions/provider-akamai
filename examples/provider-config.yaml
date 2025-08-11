@@ -1,0 +1,29 @@
+apiVersion: akamai.footprintit.net/v1alpha1
+kind: ProviderConfig
+metadata:
+  annotations:
+    meta.upbound.io/example-id: akamai/v1alpha1/providerConfig
+  labels:
+    testing.upbound.io/example-name: provider_config
+  name: default
+spec:
+  properties:
+    credentials:
+      # env block can be set if you are loading credentials from an environment variable
+      # env:
+      #   properties:
+      #     name: AKAMAI_CREDENTIALS
+      # fs block can be set if you are loading credentials from the filesystem
+      # fs:
+      #   properties:
+      #     path: /path/to/.edgerc
+      # secretRef can be set if you are loading credentials from a Kubernetes secret
+      # To create the secret required:
+      # kubectl create secret generic akamai-credentials -n crossplane-system --from-file=credentials=path/to/.edgerc
+      secretRef:
+        properties:
+          key: credentials
+          name: akamai-credentials
+          namespace: crossplane-system
+      # source of the provider credentials. pick from Secret, InjectedIdentity, Environment, or Filesystem
+      source: Secret
