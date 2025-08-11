@@ -35,7 +35,6 @@ import (
 	ipgeo "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/ipgeo"
 	ipgeoprotection "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/ipgeoprotection"
 	malwarepolicy "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/malwarepolicy"
-	malwarepolicyaction "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/malwarepolicyaction"
 	malwarepolicyactions "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/malwarepolicyactions"
 	malwareprotection "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/malwareprotection"
 	matchtarget "github.com/footprint-it-solutions/provider-akamai/internal/controller/appsec/matchtarget"
@@ -166,7 +165,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		ipgeo.Setup,
 		ipgeoprotection.Setup,
 		malwarepolicy.Setup,
-		malwarepolicyaction.Setup,
 		malwarepolicyactions.Setup,
 		malwareprotection.Setup,
 		matchtarget.Setup,

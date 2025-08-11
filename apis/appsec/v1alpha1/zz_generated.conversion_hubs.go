@@ -85,9 +85,6 @@ func (tr *IpGeoProtection) Hub() {}
 func (tr *MalwarePolicy) Hub() {}
 
 // Hub marks this type as a conversion hub.
-func (tr *MalwarePolicyAction) Hub() {}
-
-// Hub marks this type as a conversion hub.
 func (tr *MalwarePolicyActions) Hub() {}
 
 // Hub marks this type as a conversion hub.

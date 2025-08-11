@@ -100,10 +100,6 @@ func Configure(p *config.Provider) {
 		r.ShortGroup = appsecGroup
 		r.Kind = "MalwarePolicy"
 	})
-	p.AddResourceConfigurator("akamai_appsec_malware_policy_action", func(r *config.Resource) {
-		r.ShortGroup = appsecGroup
-		r.Kind = "MalwarePolicyAction"
-	})
 	p.AddResourceConfigurator("akamai_appsec_malware_policy_actions", func(r *config.Resource) {
 		r.ShortGroup = appsecGroup
 		r.Kind = "MalwarePolicyActions"

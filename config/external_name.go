@@ -36,7 +36,6 @@ var ExternalNameConfigs = map[string]config.ExternalName{
 	"akamai_appsec_ip_geo":                                       config.IdentifierFromProvider,
 	"akamai_appsec_ip_geo_protection":                            config.IdentifierFromProvider,
 	"akamai_appsec_malware_policy":                               config.IdentifierFromProvider,
-	"akamai_appsec_malware_policy_action":                        config.IdentifierFromProvider,
 	"akamai_appsec_malware_policy_actions":                       config.IdentifierFromProvider,
 	"akamai_appsec_malware_protection":                           config.IdentifierFromProvider,
 	"akamai_appsec_match_target":                                 config.IdentifierFromProvider,

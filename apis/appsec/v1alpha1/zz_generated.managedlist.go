@@ -233,15 +233,6 @@ func (l *IpGeoProtectionList) GetItems() []resource.Managed {
 	return items
 }
 
-// GetItems of this MalwarePolicyActionList.
-func (l *MalwarePolicyActionList) GetItems() []resource.Managed {
-	items := make([]resource.Managed, len(l.Items))
-	for i := range l.Items {
-		items[i] = &l.Items[i]
-	}
-	return items
-}
-
 // GetItems of this MalwarePolicyActionsList.
 func (l *MalwarePolicyActionsList) GetItems() []resource.Managed {
 	items := make([]resource.Managed, len(l.Items))
