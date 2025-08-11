@@ -10,12 +10,17 @@ spec:
   forProvider:
     cloudletCode: ER
     description: Test Cloudlet Policy
-    groupId: 123456
-    matchRules:
-      - name: example-match-rule
-        type: erMatchRule
-        statusCode: 301
-        redirectURL: https://www.google.com
-        matchURL: google.com
-        useIncomingQueryString: false
-        useIncomingSchemeAndHost: false
+    groupId: "123456"
+    matchRules: |
+      [
+        {
+          "name": "rule1",
+          "type": "erMatchRule",
+          "useRelativeUrl": "none",
+          "statusCode": 301,
+          "redirectURL": "https://my_er_cloudlet.com",
+          "matchURL": "my_er_cloudlet.com",
+          "useIncomingQueryString": false,
+          "useIncomingSchemeAndHost": false
+        }
+      ]
