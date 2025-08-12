@@ -29,6 +29,18 @@ Notice that in this example Provider resource is referencing ControllerConfig wi
 
 You can see the API reference [here](https://doc.crds.dev/github.com/footprint-it-solutions/provider-akamai).
 
+## Provider Config
+Check out the example provider config at `examples/provider-config.yaml`.
+
+Inside there is a command to create a kubernetes secret which you will need for the provider config.
+
+Ensure that in your .edgerc file there is a `[default]` section, as that is the credential the provider will use.
+
+Once the secret has been created, you can install the `ProviderConfig`:
+```
+kubectl apply -f examples/provider-config.yaml
+```
+
 ## Developing
 
 Run code-generation pipeline:
