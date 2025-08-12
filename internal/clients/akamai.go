@@ -7,6 +7,7 @@ package clients
 import (
 	"context"
 	"encoding/json"
+	"os"
 
 	"github.com/crossplane/crossplane-runtime/pkg/resource"
 	"github.com/pkg/errors"
@@ -57,16 +58,25 @@ func TerraformSetupBuilder(version, providerSource, providerVersion string) terr
 		if err != nil {
 			return ps, errors.Wrap(err, errExtractCredentials)
 		}
-		creds := map[string]string{}
+		creds := map[string]map[string]string{}
 		if err := json.Unmarshal(data, &creds); err != nil {
 			return ps, errors.Wrap(err, errUnmarshalCredentials)
 		}
 
-		// Set credentials in Terraform provider configuration.
-		/*ps.Configuration = map[string]any{
-			"username": creds["username"],
-			"password": creds["password"],
-		}*/
+		// Set credentials as environment variables for Terraform provider
+		if err := os.Setenv("AKAMAI_CLIENT_SECRET", creds["default"]["client_secret"]); err != nil {
+			return ps, errors.Wrap(err, "cannot set AKAMAI_CLIENT_SECRET environment variable")
+		}
+		if err := os.Setenv("AKAMAI_HOST", creds["default"]["host"]); err != nil {
+			return ps, errors.Wrap(err, "cannot set AKAMAI_HOST environment variable")
+		}
+		if err := os.Setenv("AKAMAI_ACCESS_TOKEN", creds["default"]["access_token"]); err != nil {
+			return ps, errors.Wrap(err, "cannot set AKAMAI_ACCESS_TOKEN environment variable")
+		}
+		if err := os.Setenv("AKAMAI_CLIENT_TOKEN", creds["default"]["client_token"]); err != nil {
+			return ps, errors.Wrap(err, "cannot set AKAMAI_CLIENT_TOKEN environment variable")
+		}
+
 		return ps, nil
 	}
 }
