@@ -8,20 +8,25 @@ metadata:
   name: test-cloudlet-policy
 spec:
   forProvider:
-    name: Test-Cloudlet-Policy
-    cloudletCode: ER
+    name: Test_Cloudlet_Policy
+    cloudletCode: IG
     description: Test Cloudlet Policy
     groupId: "123456"
     matchRules: |
       [
         {
           "name": "rule1",
-          "type": "erMatchRule",
-          "useRelativeUrl": "none",
-          "statusCode": 301,
-          "redirectURL": "https://my_er_cloudlet.com",
-          "matchURL": "my_er_cloudlet.com",
-          "useIncomingQueryString": false,
-          "useIncomingSchemeAndHost": false
+          "type": "igMatchRule",
+          "allowDeny": "allow",
+          "matches": [
+            {
+              "matchValue": "8.8.8.8",
+              "matchOperator": "equals",
+              "negate": false,
+              "caseSensitive": false,
+              "checkIPs": "CONNECTING_IP XFF_HEADERS",
+              "matchType": "clientip"
+            }
+          ]
         }
       ]
